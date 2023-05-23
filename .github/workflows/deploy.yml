@@ -14,10 +14,10 @@ jobs:
       uses: actions/checkout@v2
     - name: Set up SSH
       run:
-         mkdir -p ~/.ssh/
-         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-         chmod 600 ~/.ssh/id_rsa
-         ssh-keyscan 157.245.86.84 >> ~/.ssh/known_hosts
+         mkdir -p ~/
+         echo SSH_PRIVATE_KEY > ~/id_rsa
+         chmod 600 ~/id_rsa
+         ssh-keyscan 157.245.86.84 >> ~/known_hosts
 
 
 
