@@ -1,10 +1,7 @@
-name: Python Script Test
+name: Pipeline Setup Testing
 
 on:
   push:
-    branches:
-      - master
-  pull_request:
     branches:
       - master
 
@@ -15,23 +12,11 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
-
-    - name: Install dependencies
-      run:
-        pip install pytest
-        pip install coverage
-
+      
     - name: Deploy to server 
       run: |
         ssh -i ${{ 157.245.86.84 }} ${{ root }} ${{ SSH_PRIVATE_KEY }} ${{ 22 }}
     - name: Deploy
-      run: |
-        mkdir -p /root/mohid/invozone/mohid
-        displayName: 'mohid'
-        shell: bash
-
+      run:
+        cd /root/mohid/invozone
+        mkdir test
