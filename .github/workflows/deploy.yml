@@ -1,31 +1,29 @@
-name: Connect to Server
+name: Python Script Test
+
 on:
   push:
-     branches: ['master']
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
-  deploy:
+jobs:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
 
-  - name: Create Folder
-        run: mkdir my-folder
+    - name: Install dependencies
+      run: pip install -r requirements.txt
 
-      - name: Create File in my-folder
-        run:  touch my-file
-
-     - name: Connect to Server
-        uses: ssh username@host
-        with:
-          host: ${{ 157.245.86.84 }}
-          username: ${{ root }}
-          port: ${{ 22 }}
-
-      - name: Execute Commands on Server
-        run: |
-          # Add your commands to execute on the server here
-          echo "Connected to server"
+    - name: Run script
+      run: python /tmp/mohid/invozone
 
