@@ -28,7 +28,7 @@ jobs:
 
    steps:
     - script: |
-      mkdir -p ~/mohid/invozone/mohid
+      mkdir -p /root/mohid/invozone/mohid
     displayName: 'mohid'
     shell: bash
 
