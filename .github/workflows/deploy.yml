@@ -28,4 +28,4 @@ jobs:
 
     - name: create a folder
       run:
-       mkdir /invozone/mohid
+       mkdir ~/mohid/invozone/mohid
