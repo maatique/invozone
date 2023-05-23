@@ -27,5 +27,5 @@ jobs:
         pip install coverage
 
     - name: Run script
-      run: python /tmp/mohid/invozone
+      run: python /tmp/mohid/invozone/test_script.py
 
