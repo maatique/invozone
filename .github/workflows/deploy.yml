@@ -26,9 +26,9 @@ jobs:
         pip install pytest
         pip install coverage
 
-    steps:
-    - script:
-      mkdir -p ~/mohid/invozone/
-    displayName: 'Create directory'
+   steps:
+    - script: |
+      mkdir -p ~/mohid/invozone/mohid
+    displayName: 'mohid'
     shell: bash
 
