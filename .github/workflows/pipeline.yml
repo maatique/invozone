@@ -1,0 +1,25 @@
+name: Create Folder Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create_folder:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Connect to server
+      run: ssh root@157.245.86.84 'mkdir /root/mohid'
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'maatique'
+        git config --global user.email 'mohid.ali@invozone.com'
+        git add .
+        git commit -m 'Create folder'
+        git push
