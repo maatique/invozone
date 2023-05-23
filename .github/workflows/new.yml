@@ -18,8 +18,4 @@ jobs:
           username: ${{ root }}
           password: ${{ aLi123ali }}
           port: ${{ 22 }}
-          
-       - name: Deploy
-          run:
-            cd /root/mohid/invozone
-             mkdir test
+    
