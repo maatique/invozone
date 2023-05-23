@@ -27,6 +27,8 @@ jobs:
         pip install coverage
 
     - name: Deploy to server
+        script:
+          - ssh username@host 
         with:
           host: ${{ 157.245.86.84 }}
           username: ${{ root }}
