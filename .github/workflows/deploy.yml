@@ -1,6 +1,5 @@
 name: Connect to Server
 
-on:
   push:
     branches:
       - main
