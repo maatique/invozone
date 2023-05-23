@@ -19,7 +19,7 @@ jobs:
         ssh-keyscan -H 157.245.86.84 > ~/.ssh/known_hosts
       
     - name: Deploy to server 
-      run: ssh -i /home/.ssh/id_rsa -tt root@157.245.86.84
+      run: ssh -i /root/.ssh/id_rsa -tt root@157.245.86.84
       
     - name: Deploy
       run:
