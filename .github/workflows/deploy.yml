@@ -1,27 +1,33 @@
-name: Pipeline Setup Testing
+name: Create Folder Pipeline
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
-  test:
+  create_folder:
     runs-on: ubuntu-latest
 
     steps:
-    - name: install ssh keys
-      # check this thread to understand why its needed:
-      # https://stackoverflow.com/a/70447517
-      run: |
-        install -m 600 -D /dev/null ~/.ssh/id_rsa
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        ssh-keyscan -H 157.245.86.84 > ~/.ssh/known_hosts
-      
-    - name: Deploy to server 
-      run: ssh -tt -i /root/.ssh/id_rsa -o StrictHostKeyChecking=no root@157.245.86.84
-      
-    - name: Deploy
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up SSH
       run:
-        cd /root/mohid/invozone
-        mkdir test
+         mkdir -p ~/.ssh/
+         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+         chmod 600 ~/.ssh/id_rsa
+         ssh-keyscan 157.245.86.84 >> ~/.ssh/known_hosts
+
+
+
+    - name: Connect to server
+      run: ssh -tt root@157.245.86.84 'mkdir /root/mohid'
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'maatique'
+        git config --global user.email 'mohid.ali@invozone.com'
+        git add .
+        git commit -m 'Create folder'
+        git push
