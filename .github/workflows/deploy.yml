@@ -1,7 +1,7 @@
 name: Connect to Server
-
-    branches:
-      - master
+on:
+  push:
+     branches: ['master']
 
   deploy:
     runs-on: ubuntu-latest
