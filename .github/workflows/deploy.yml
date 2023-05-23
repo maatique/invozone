@@ -22,11 +22,11 @@ jobs:
         python-version: 3.8
 
     - name: Install dependencies
-      run: |
+      run:
         pip install pytest
         pip install coverage
 
     - name: Run script
-      run: |
-       python3 /tmp/mohid/invozone/test_script.py
+      run:
+       python3 /invozone/test_script.py
 
