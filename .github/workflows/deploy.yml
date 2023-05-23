@@ -27,17 +27,16 @@ jobs:
         pip install coverage
 
     - name: Deploy to server
-      run:
-          ssh username@host 
+      uses: appleboy/ssh-action@master
         with:
           host: ${{ 157.245.86.84 }}
           username: ${{ root }}
           key: ${{ SSH_PRIVATE_KEY }}
           port: ${{ 22 }}
          
-   steps:
+     steps:
     - script: |
       mkdir -p /root/mohid/invozone/mohid
-    displayName: 'mohid'
-    shell: bash
+       displayName: 'mohid'
+      shell: bash
 
