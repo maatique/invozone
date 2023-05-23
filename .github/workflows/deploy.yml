@@ -28,5 +28,5 @@ jobs:
 
     - name: Run script
       run:
-       python3 /invozone/test_script.py
+       python3 /test_script.py
 
