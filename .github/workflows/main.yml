@@ -1,27 +1,23 @@
-  - name: Deploy
-    on:
-    push:
-      branches:
-          - master
 
-      jobs:
-       create_folder:
-          runs-on: ubuntu-latest
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
 
-     
-      steps:
-        - name: Checkout code
-      uses: actions/checkout@v2
- 
-  - name: Connect to Server
-    script:
-          - ssh root@157.245.86.84
-
-  - name: Execute Commands on Server
-    script:
-          - ssh root@157.245.86.84 "cd remote_directory && ./deploy.sh"
-
-  - name: Restart Server
-         script:
-          - ssh root@157.245.86.84 "sudo systemctl restart server_service"
-
+jobs:
+  deploy-do:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH to server and Deploy App
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ 157.245.86.84 }}
+          username: ${{ root }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ 22 }}
+          script: |
+            cd ~/app
+            git pull origin master
+            npm run build
+            pm2 restart next
