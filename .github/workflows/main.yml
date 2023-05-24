@@ -1,9 +1,20 @@
   - name: Deploy
-  
-     push:
-       branches: ['master']
+    on:
+    push:
+      branches:
+          - master
 
-     steps:
+      jobs:
+       create_folder:
+          runs-on: ubuntu-latest
+
+     
+      steps:
+      - name: Checkout code
+      uses: actions/checkout@v2
+ 
+
+       steps:
  
         - name: Connect to Server
           script:
