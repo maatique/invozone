@@ -10,21 +10,18 @@
 
      
       steps:
-      - name: Checkout code
+        - name: Checkout code
       uses: actions/checkout@v2
  
-
-       steps:
- 
-        - name: Connect to Server
-          script:
+  - name: Connect to Server
+    script:
           - ssh root@157.245.86.84
 
-        - name: Execute Commands on Server
-          script:
+  - name: Execute Commands on Server
+    script:
           - ssh root@157.245.86.84 "cd remote_directory && ./deploy.sh"
 
-        - name: Restart Server
-          script:
+  - name: Restart Server
+         script:
           - ssh root@157.245.86.84 "sudo systemctl restart server_service"
 
