@@ -1,7 +1,7 @@
 name: Create Folder Pipeline
 
 on:
-  push:
+   push:
     branches:
       - main
 
