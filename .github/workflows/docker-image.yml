@@ -16,8 +16,8 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
           host: 
-           157.230.60.4
-          username: ali 
+           157.245.86.84
+          username: root 
           key: SSH_PRIVATE_KEY
           port: 
             22
