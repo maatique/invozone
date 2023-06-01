@@ -33,5 +33,5 @@ jobs:
       
       - name: create directory
         run: |
-            cd  ~/mohid
-            mkdir ~/mohid/ali
+            cd  ~/home/mohid/mohid
+            mkdir ~/home/mohid/mohid/ali
