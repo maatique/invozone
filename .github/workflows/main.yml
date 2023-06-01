@@ -33,5 +33,5 @@ jobs:
       
       - name: clone repo
         run: |
-            cd /home/mohid
+            cd  ~/mohid
             git clone https://github.com/maatique/invozone.git
